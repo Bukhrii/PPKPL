@@ -13,13 +13,17 @@ class IncidentTicket extends Model
 
     protected $fillable = [
         'storage_room_id',
-        'condition_data_id',
-        'deviation_level',
+        'incident_date',
+        'description',
         'status',
+        'reported_by',
+        'escalated_at',
+        'escalation_level',
     ];
 
     protected $casts = [
-        'deviation_level' => 'string',
+        'incident_date' => 'datetime',
+        'escalated_at' => 'datetime',
     ];
 
     // -------------------------------------------------------------------------

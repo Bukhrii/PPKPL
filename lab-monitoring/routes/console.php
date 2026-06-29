@@ -10,3 +10,10 @@ Artisan::command('inspire', function () {
 
 // Mendaftarkan Scheduled Task kita untuk fitur Checklist 6 jam (US 3.1)
 Schedule::command('monitor:check-overdue')->hourly();
+
+// Mendaftarkan perintah cron lama
+Schedule::command(CheckOverdueMonitoring::class)->hourly();
+
+// Mendaftarkan CRON ESKALASI BARU
+// Sistem akan mengecek setiap 15 menit apakah ada tiket yang SLA-nya bocor
+Schedule::command(EscalateUnresolvedIncidents::class)->everyFifteenMinutes();
